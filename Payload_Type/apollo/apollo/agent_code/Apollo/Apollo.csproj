@@ -73,6 +73,10 @@
       <Project>{5b5bd587-7dca-4306-b1c3-83a70d755f37}</Project>
       <Name>ApolloInterop</Name>
     </ProjectReference>
+    <ProjectReference Include="..\C3Profile\C3Profile.csproj">
+      <Project>{5a70079f-03d3-4236-88e7-5de07349ce48}</Project>
+      <Name>C3Profile</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DInvokeResolver\DInvokeResolver.csproj">
       <Project>{2c98a07c-f4cd-486c-bbab-eb6b6cde1a35}</Project>
       <Name>DInvokeResolver</Name>
