@@ -260,15 +260,16 @@ String.Format("SELECT CommandLine FROM Win32_Process WHERE ProcessId = {0}", pro
                     result = 3;
                     break;
                 case "S-1-16-16384":
-                    result = 3;
+                    result = 4;
                     break;
                 case "S-1-16-20480":
-                    result = 3;
+                    result = 5;
                     break;
                 case "S-1-16-28672":
                     result = 3;
                     break;
                 default:
+                    result = 10;
                     break;
             }
             return result;

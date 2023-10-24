@@ -8,11 +8,11 @@ function(task, responses){
         let file = {};
         let data = "";
         let rows = [];
+        let tableTitle = "";
+        
         let headers = [
-            {"plaintext": "kill", "type": "button", "startIcon": "kill", "cellStyle": {}, "width": 100, "disableSort": true},
-            {"plaintext": "operator", "type": "string", "cellStyle": {}, "width": 200},
-            {"plaintext": "command", "type": "string", "cellStyle": {}, "width": 200},
-            {"plaintext": "arguments", "type": "string", "cellStyle": {}, "fillWidth": true},
+            {"plaintext": "set", "type": "button", "cellStyle": {}, "width": 100, "disableSort": true},
+            {"plaintext": "name", "type": "string", "cellStyle": {}, "fillWidth": true },
         ];
         for(let i = 0; i < responses.length; i++)
         {
@@ -28,20 +28,18 @@ function(task, responses){
             
             for(let j = 0; j < data.length; j++){
                 let jinfo = data[j];
-                if (jinfo['status'] == "completed") continue;
                 let row = {
                     // If process name is BAD, then highlight red.
                     "rowStyle": {},
-                    "kill": {"button": {
-                        "name": "kill",
+                    "set": {"button": {
+                        "name": "set",
                         "type": "task",
-                        "ui_feature": "jobkill",
-                        "parameters": jinfo["agent_task_id"],
+                        "disabled": jinfo["is_current"],
+                        "ui_feature": "set_injection_technique",
+                        "parameters": jinfo["name"],
                         "cellStyle": {},
                     }},
-                    "operator": {"plaintext": jinfo["operator_username"], "cellStyle": {}},
-                    "command": {"plaintext": jinfo["command_name"], "cellStyle": {}},
-                    "arguments": {"plaintext": jinfo["params"], "cellStyle": {}},
+                    "name": {"plaintext": jinfo["name"], "cellStyle": {}},
                 };
                 rows.push(row);
             }
@@ -49,7 +47,7 @@ function(task, responses){
         return {"table":[{
             "headers": headers,
             "rows": rows,
-            "title": "Running Jobs"
+            "title": "Loaded Injection Techniques",
         }]};
     }else{
         // this means we shouldn't have any output

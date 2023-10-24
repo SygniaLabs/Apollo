@@ -120,7 +120,7 @@ namespace Tasks
                         result.GroupName = Marshal.PtrToStringUni(@group.name);
                         result.Comment = Marshal.PtrToStringUni(@group.comment);
                         results.Add(result);
-                        ptr = (IntPtr) ((int) ptr + Marshal.SizeOf(typeof(LocalGroupUsersInfo)));
+                        ptr = (IntPtr) ((long) ptr + Marshal.SizeOf(typeof(LocalGroupUsersInfo)));
                     }
                 }
             }
