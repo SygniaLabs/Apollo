@@ -46,6 +46,32 @@ class InlineAssemblyArguments(TaskArguments):
                         ui_position=2
                     ),
                 ]),
+            CommandParameter(
+                name="assembly_name",
+                cli_name = "Assembly",
+                display_name = "Assembly",
+                type=ParameterType.String,
+                description="Assembly to execute (e.g., Seatbelt.exe).",
+                parameter_group_info = [
+                    ParameterGroupInfo(
+                        required=True,
+                        group_name="Manual",
+                        ui_position=1
+                    ),
+                ]),
+            CommandParameter(
+                name="assembly_arguments",
+                cli_name="Arguments",
+                display_name="Arguments",
+                type=ParameterType.String,
+                description="Arguments to pass to the assembly.",
+                parameter_group_info = [
+                    ParameterGroupInfo(
+                        required=False,
+                        group_name="Manual",
+                        ui_position=2
+                    ),
+                ]),
         ]
 
     async def parse_arguments(self):
