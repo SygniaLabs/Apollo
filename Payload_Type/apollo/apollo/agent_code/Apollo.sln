@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30413.136
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApolloInterop", "ApolloInterop\ApolloInterop.csproj", "{5B5BD587-7DCA-4306-B1C3-83A70D755F37}"
 EndProject
@@ -40,6 +40,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleResolver", "SimpleResolver\SimpleResolver.csproj", "{6CA1FF03-8102-41D5-9D57-CC2DA346D684}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C3Profile", "C3Profile\C3Profile.csproj", "{5A70079F-03D3-4236-88E7-5DE07349CE48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnsProfile", "DnsProfile\DnsProfile.csproj", "{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -279,6 +281,18 @@ Global
 		{5A70079F-03D3-4236-88E7-5DE07349CE48}.Release|x64.Build.0 = Release|Any CPU
 		{5A70079F-03D3-4236-88E7-5DE07349CE48}.Release|x86.ActiveCfg = Release|Any CPU
 		{5A70079F-03D3-4236-88E7-5DE07349CE48}.Release|x86.Build.0 = Release|Any CPU
+		{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}.Debug|x64.Build.0 = Debug|Any CPU
+		{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}.Debug|x86.Build.0 = Debug|Any CPU
+		{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}.Release|x64.ActiveCfg = Release|Any CPU
+		{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}.Release|x64.Build.0 = Release|Any CPU
+		{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}.Release|x86.ActiveCfg = Release|Any CPU
+		{DAF4EA1E-6EF8-4B3B-8026-AE758EFE403B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
