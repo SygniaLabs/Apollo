@@ -34,21 +34,8 @@ class InlineAssemblyArguments(TaskArguments):
                     ),
                 ]),
             CommandParameter(
-                name="assembly_arguments",
-                cli_name="Arguments",
-                display_name="Arguments",
-                type=ParameterType.String,
-                description="Arguments to pass to the assembly.",
-                parameter_group_info = [
-                    ParameterGroupInfo(
-                        required=False,
-                        group_name="Default",
-                        ui_position=2
-                    ),
-                ]),
-            CommandParameter(
-                name="assembly_name",
-                cli_name = "Assembly",
+                name="assembly_name_custom",
+                cli_name = "AssemblyCustom",
                 display_name = "Assembly",
                 type=ParameterType.String,
                 description="Assembly to execute (e.g., Seatbelt.exe).",
@@ -66,6 +53,11 @@ class InlineAssemblyArguments(TaskArguments):
                 type=ParameterType.String,
                 description="Arguments to pass to the assembly.",
                 parameter_group_info = [
+                    ParameterGroupInfo(
+                        required=False,
+                        group_name="Default",
+                        ui_position=2
+                    ),
                     ParameterGroupInfo(
                         required=False,
                         group_name="Manual",
@@ -155,7 +147,12 @@ class InlineAssemblyCommand(CommandBase):
                 raise Exception("Failed to register Interop DLL: {}".format(file_resp.Error))
         
         taskData.args.add_arg("interop_id", INTEROP_FILE_ID)
-
+        if taskData.args.get_arg("assembly_name") is not None:
+            assembly_name = taskData.args.get_arg("assembly_name")
+        elif taskData.args.get_arg("assembly_name_custom") is not None:
+            assembly_name = taskData.args.get_arg("assembly_name_custom")
+        else:
+            raise Exception("No executable provided.")
         response.DisplayParams = "-Assembly {} -Arguments {}".format(
             taskData.args.get_arg("assembly_name"),
             taskData.args.get_arg("assembly_arguments")
