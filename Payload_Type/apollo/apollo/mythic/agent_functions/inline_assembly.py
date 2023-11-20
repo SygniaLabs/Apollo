@@ -149,12 +149,12 @@ class InlineAssemblyCommand(CommandBase):
         taskData.args.add_arg("interop_id", INTEROP_FILE_ID)
         if taskData.args.get_arg("assembly_name") is not None:
             assembly_name = taskData.args.get_arg("assembly_name")
-        elif taskData.args.get_arg("assembly_name_custom") is not None:
+        elif taskData.args.get_arg("assembly_name_custom") is not None and taskData.args.get_arg("assembly_name_custom") != "":
             assembly_name = taskData.args.get_arg("assembly_name_custom")
         else:
             raise Exception("No executable provided.")
         response.DisplayParams = "-Assembly {} -Arguments {}".format(
-            taskData.args.get_arg("assembly_name"),
+            assembly_name,
             taskData.args.get_arg("assembly_arguments")
         )
 
