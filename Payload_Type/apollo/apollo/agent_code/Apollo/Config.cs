@@ -153,7 +153,8 @@ namespace Apollo
                     }
                 }
             },
-#elif TCP
+#endif
+#if TCP
             { "tcp", new C2ProfileData()
                 {
                     TC2Profile = typeof(TcpProfile),
