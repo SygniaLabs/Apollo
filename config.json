@@ -3,8 +3,5 @@
   "exclude_c2_profiles": false,
   "exclude_documentation_payload": false,
   "exclude_documentation_c2": false,
-  "exclude_agent_icons": false,
-  "remote_images": {
-    "apollo": "ghcr.io/mythicagents/apollo:v0.0.0.31"
-  }
+  "exclude_agent_icons": false
 }
