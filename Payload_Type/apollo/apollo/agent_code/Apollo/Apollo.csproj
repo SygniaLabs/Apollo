@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApolloInterop\ApolloInterop.csproj" />
+    <ProjectReference Include="..\C3Profile\C3Profile.csproj" />
     <ProjectReference Include="..\DInvokeResolver\DInvokeResolver.csproj" />
     <ProjectReference Include="..\EncryptedFileStore\EncryptedFileStore.csproj" />
     <ProjectReference Include="..\HttpProfile\HttpProfile.csproj" />
