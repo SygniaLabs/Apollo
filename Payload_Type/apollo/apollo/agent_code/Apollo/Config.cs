@@ -126,10 +126,10 @@ namespace Apollo
                         { "callback_jitter", "0" },
                         { "encrypted_exchange_check", "T" },
 #else
-                        { "pipename", "pipename_here" },
-                        { "callback_interval", "callback_interval_here" },
-                        { "callback_jitter", "callback_jitter_here" },
-                        { "encrypted_exchange_check", "encrypted_exchange_check_here" },
+                        { "pipename", "c3_pipename_here" },
+                        { "callback_interval", "c3_callback_interval_here" },
+                        { "callback_jitter", "c3_callback_jitter_here" },
+                        { "encrypted_exchange_check", "c3_encrypted_exchange_check_here" },
 #endif
                     }
                 }
