@@ -48,10 +48,23 @@ namespace C3Transport
 
         public C3Profile(Dictionary<string, string> data, ISerializer serializer, IAgent agent) : base(data, serializer, agent)
         {
+            // debug:
+            Console.WriteLine($"callback_interval = '{data["callback_interval"]}'");
+            Console.WriteLine($"callback_jitter = '{data["callback_jitter"]}'");
+
+            if (!int.TryParse(data["callback_interval"], out CallbackInterval))
+            {
+                CallbackInterval = 3;
+            }
+            if (!double.TryParse(data["callback_jitter"], out CallbackJitter))
+            {
+                CallbackJitter = 10;
+            }
+
             _namedPipeName = data["pipename"];
             _encryptedExchangeCheck = data["encrypted_exchange_check"] == "T";
-            CallbackInterval = int.Parse(data["callback_interval"]);
-            CallbackJitter = double.Parse(data["callback_jitter"]);
+            //CallbackInterval = int.Parse(data["callback_interval"]);
+            //CallbackJitter = double.Parse(data["callback_jitter"]);
             _agent = agent;
             _sendAction = (object p) =>
             {
